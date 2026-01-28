@@ -12,12 +12,10 @@ const Components = {
         </a>
 
         <!-- Center Links -->
-        <div class="nav-pill-group">
             <a href="index.html" class="custom-nav-link" data-page="home">Home</a>
             <a href="skills.html" class="custom-nav-link" data-page="skills">Skills</a>
             <a href="index.html#education" class="custom-nav-link">Education</a>
             <a href="index.html#projects" class="custom-nav-link">Projects</a>
-            <a href="index.html#contact" class="custom-nav-link">Contact</a>
         </div>
 
         <!-- Theme Toggle -->

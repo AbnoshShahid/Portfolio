@@ -16,6 +16,14 @@
     --text-color: #f8fafc;
     --text-muted: #94a3b8;
     --primary-color: #3b82f6;
+
+    /* Extended Theme Variables (Dark) */
+    --hero-gradient-start: #ffffff;
+    --hero-gradient-end: #94a3b8;
+    --card-bg-start: #1e293b;
+    --card-bg-end: #0f172a;
+    --card-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    --card-border: var(--border-color);
 }
 
 /* Light Theme Variables */
@@ -34,6 +42,14 @@ body.theme-light {
     --text-color: #0f172a;
     --text-muted: #64748b;
     --primary-color: #2563eb;
+
+    /* Extended Theme Variables (Light) */
+    --hero-gradient-start: #1e293b;
+    --hero-gradient-end: #475569;
+    --card-bg-start: #ffffff;
+    --card-bg-end: #f1f5f9;
+    --card-shadow: 0 25px 50px -12px rgba(148, 163, 184, 0.35);
+    --card-border: #cbd5e1;
 }
 
 /* Light Theme overrides for specific active pill text */
