@@ -121,19 +121,9 @@ body.theme-light .custom-nav-link.active {
     text-decoration: none;
 }
 
-/* Mobile Menu Button - Hidden on Desktop */
+/* Mobile Menu Button - Hidden by default (Desktop) */
 .mobile-menu-btn {
     display: none;
-    background: none;
-    border: none;
-    padding: 0.5rem;
-    color: var(--nav-text-color);
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.mobile-menu-btn:hover {
-    color: var(--primary-color);
 }
 
 /* Middle Nav Pill Group - Desktop */
@@ -152,7 +142,6 @@ body.theme-light .custom-nav-link.active {
     border: 1px solid var(--nav-border-color);
 }
 
-
 .custom-nav-link {
     position: relative;
     padding: 0.6rem 1.25rem;
@@ -170,14 +159,11 @@ body.theme-light .custom-nav-link.active {
     color: var(--nav-text-color);
     opacity: 1;
     background: rgba(255, 255, 255, 0.05);
-    /* Subtle hover bg */
 }
 
-/* Active State */
 .custom-nav-link.active {
     background: var(--nav-active-pill);
     color: #fff;
-    /* Always white text on dark active gradient */
     opacity: 1;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -202,20 +188,51 @@ body.theme-light .custom-nav-link.active {
     transform: rotate(15deg);
 }
 
-/* =========================================
-   RESPONSIVE DESIGN (<= 768px)
-   ========================================= */
 
-@media (max-width: 992px) {
+/* =========================================
+   DESKTOP OVERRIDES (>= 769px) - Forced Visibility
+   ========================================= */
+@media (min-width: 769px) {
     .glass-navbar {
-        padding: 0 1rem;
-        height: 65px;
+        overflow: visible;
+        /* Ensure dropdowns/popovers work if any */
+    }
+
+    .nav-links-wrapper {
+        display: flex !important;
+        position: static !important;
+        opacity: 1 !important;
+        transform: none !important;
+        pointer-events: auto !important;
+        flex-direction: row !important;
+        padding: 0 !important;
+        background: none !important;
+        width: auto !important;
+    }
+
+    .nav-links {
+        display: flex !important;
+        flex-direction: row !important;
+        background: var(--nav-pill-bg) !important;
+        padding: 0.35rem !important;
+        gap: 0.25rem !important;
+        border: 1px solid var(--nav-border-color) !important;
+        box-shadow: none !important;
+        position: static !important;
+    }
+
+    .mobile-menu-btn {
+        display: none !important;
     }
 }
 
+
+/* =========================================
+   MOBILE DESIGN (<= 768px)
+   ========================================= */
 @media (max-width: 768px) {
 
-    /* 1. Navbar Container Size */
+    /* 1. Navbar Container */
     .glass-navbar-container {
         top: 10px;
         padding: 0 0.75rem;
@@ -227,42 +244,45 @@ body.theme-light .custom-nav-link.active {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        /* Ensure z-index is high */
         position: relative;
         z-index: 1000;
+        overflow: visible;
+        /* Allow absolute dropdown to show */
     }
 
-    /* 2. Brand & Toggle */
+    /* 2. Brand */
     .nav-brand {
         font-size: 1.1rem;
-        /* Prevent wrapping */
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         max-width: 50%;
     }
 
-    /* 3. Show Hamburger */
+    /* 3. Hamburger */
     .mobile-menu-btn {
         display: flex;
         align-items: center;
         justify-content: center;
+        background: none;
+        border: none;
+        padding: 0.5rem;
+        color: var(--nav-text-color);
+        cursor: pointer;
     }
 
-    /* 4. Hide Default Nav Links Wrapper */
+    /* 4. Mobile Dropdown Wrapper */
     .nav-links-wrapper {
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
         padding-top: 10px;
-        /* Space between navbar and dropdown */
 
         display: none;
         /* Hidden by default */
         flex-direction: column;
         align-items: center;
-        width: 100%;
         z-index: 1100;
     }
 
@@ -272,12 +292,13 @@ body.theme-light .custom-nav-link.active {
         animation: slideDown 0.3s ease forwards;
     }
 
-    /* 5. Mobile Dropdown Style */
+    /* 5. Dropdown Style */
     .nav-links {
+        display: flex;
+        /* Override flex layout */
         flex-direction: column;
         width: 100%;
         max-width: 95vw;
-        /* Almost full width */
         margin: 0 auto;
 
         background: var(--nav-bg-glass);
@@ -287,11 +308,10 @@ body.theme-light .custom-nav-link.active {
         border-radius: 1.5rem;
         padding: 1rem;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-
         gap: 0.5rem;
     }
 
-    /* 6. Link Styling for Mobile */
+    /* 6. Link Styling */
     .custom-nav-link {
         width: 100%;
         text-align: center;
@@ -308,94 +328,6 @@ body.theme-light .custom-nav-link.active {
         width: 36px;
         height: 36px;
     }
-}
-
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-font-size: 1.1rem;
-/* Prevent wrapping */
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
-max-width: 50%;
-}
-
-/* 3. Show Hamburger */
-.mobile-menu-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* 4. Hide Default Nav Links Wrapper */
-.nav-links-wrapper {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding-top: 10px;
-    /* Space between navbar and dropdown */
-
-    display: none;
-    /* Hidden by default */
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    z-index: 1100;
-}
-
-/* Open State */
-.nav-links-wrapper.active {
-    display: flex;
-    animation: slideDown 0.3s ease forwards;
-}
-
-/* 5. Mobile Dropdown Style */
-.nav-links {
-    flex-direction: column;
-    width: 100%;
-    max-width: 95vw;
-    /* Almost full width */
-    margin: 0 auto;
-
-    background: var(--nav-bg-glass);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--nav-border-color);
-    border-radius: 1.5rem;
-    padding: 1rem;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-
-    gap: 0.5rem;
-}
-
-/* 6. Link Styling for Mobile */
-.custom-nav-link {
-    width: 100%;
-    text-align: center;
-    padding: 0.85rem;
-    border-radius: 1rem;
-    background: rgba(255, 255, 255, 0.03);
-}
-
-.custom-nav-link:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.theme-toggle-btn {
-    width: 36px;
-    height: 36px;
-}
 }
 
 @keyframes slideDown {
