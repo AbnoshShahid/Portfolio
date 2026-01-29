@@ -102,34 +102,6 @@
    */
   const projectsData = [
     {
-      title: "Student Registration Form",
-      description: "A comprehensive and responsive student registration system with form validation and modern UI.",
-      image: "assets/img/projects/student-form.png",
-      tags: ["HTML5", "CSS3", "JavaScript", "Responsive UI"],
-      highlights: [
-        "Real-time form validation",
-        "Clean and modern user interface",
-        "Fully responsive layout"
-      ],
-      githubUrl: "https://github.com/AbnoshShahid/Student-Registration-Form", // Inferring repo from GH pages URL
-      liveUrl: "https://abnoshshahid.github.io/Student-Registration-Form/",
-      detailsUrl: "#"
-    },
-    {
-      title: "Job Application Tracker",
-      description: "A powerful dashboard to track job applications, manage interviews, and analyze application status.",
-      image: "assets/img/projects/job-tracker.png",
-      tags: ["Next.js", "React", "Tailwind CSS", "Vercel"],
-      highlights: [
-        "Interactive analytics dashboard",
-        "Dark mode interface",
-        "Status tracking and management"
-      ],
-      githubUrl: "https://github.com/AbnoshShahid/Job-Application-Tracker", // Guessing/Generic link, user didn't provide repo but I should provide a button.
-      liveUrl: "https://job-application-tracker-six-gamma.vercel.app/",
-      detailsUrl: "#"
-    },
-    {
       title: "AI Roadmap Navigator",
       description: "A comprehensive MERN stack platform for generating and tracking personalized career learning paths.",
       image: "assets/img/projects/ai-roadmap.png",
@@ -142,6 +114,48 @@
       githubUrl: "https://github.com/AbnoshShahid/AI-Roadmap-Navigator",
       liveUrl: "https://ai-roadmap-navigator.vercel.app/",
       detailsUrl: "#"
+    },
+    {
+      title: "Job Application Tracker",
+      description: "A powerful dashboard to track job applications, manage interviews, and analyze application status.",
+      image: "assets/img/projects/job-tracker.png",
+      tags: ["Next.js", "React", "Tailwind CSS", "Vercel"],
+      highlights: [
+        "Interactive analytics dashboard",
+        "Dark mode interface",
+        "Status tracking and management"
+      ],
+      githubUrl: "https://github.com/AbnoshShahid/Job-Application-Tracker",
+      liveUrl: "https://job-application-tracker-six-gamma.vercel.app/",
+      detailsUrl: "#"
+    },
+    {
+      title: "Organic Meal — Ecommerce Website",
+      description: "A modern ecommerce website for Organic Meal featuring product showcase, pricing, and WhatsApp-based ordering for fast, direct customer checkout.",
+      image: "assets/img/projects/organic-meal.png",
+      tags: ["HTML5", "CSS3", "JavaScript", "Responsive Design", "Netlify"],
+      highlights: [
+        "Responsive UI, product categories, and conversion-focused CTA sections.",
+        "Secure digital payments",
+        "Direct WhatsApp ordering integration"
+      ],
+      githubUrl: "https://github.com/AbnoshShahid/Organic_Meal",
+      liveUrl: "https://organic-meal.netlify.app/",
+      detailsUrl: "#"
+    },
+    {
+      title: "Student Registration Form",
+      description: "A comprehensive and responsive student registration system with form validation and modern UI.",
+      image: "assets/img/projects/student-form.png",
+      tags: ["HTML5", "CSS3", "JavaScript", "Responsive UI"],
+      highlights: [
+        "Real-time form validation",
+        "Clean and modern user interface",
+        "Fully responsive layout"
+      ],
+      githubUrl: "https://github.com/AbnoshShahid/Student-Registration-Form",
+      liveUrl: "https://abnoshshahid.github.io/Student-Registration-Form/",
+      detailsUrl: "#"
     }
   ];
 
@@ -150,10 +164,12 @@
     if (!container) return;
 
     container.innerHTML = projectsData.map(project => {
-      // Image Handling: Use placeholder if missing
+      // Image Handling: Use placeholder if missing, with fallback on error
       const hasImage = project.image && project.image.trim() !== '';
+
       const imageHtml = hasImage
-        ? `<img src="${project.image}" alt="${project.title}" loading="lazy" decoding="async">`
+        ? `<img src="${project.image}" alt="${project.title}" loading="lazy" decoding="async" 
+             onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'project-placeholder\\'><span>' + this.alt.charAt(0) + '</span></div>'">`
         : `<div class="project-placeholder"><span>${project.title.charAt(0)}</span></div>`;
 
       // Tags: Render all as pills
@@ -162,12 +178,13 @@
       ).join('');
 
       // Links Logic
-      const githubBtn = `
-        <a href="${project.githubUrl}" target="_blank" class="icon-btn" aria-label="GitHub Repo" title="View Code">
+      const githubUrl = project.githubUrl || '';
+      const githubBtn = githubUrl ? `
+        <a href="${githubUrl}" target="_blank" class="icon-btn" aria-label="GitHub Repo" title="View Code">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
           </svg>
-        </a>`;
+        </a>` : '';
 
       const liveBtn = project.liveUrl ? `
         <a href="${project.liveUrl}" target="_blank" class="icon-btn" aria-label="Live Demo" title="Live Demo">
