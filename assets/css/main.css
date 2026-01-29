@@ -163,15 +163,23 @@ img {
 
 /* Utilities */
 .light-background {
-  background-color: var(--surface-color);
+  /* background-color: var(--surface-color); */
+  background-color: rgba(30, 41, 59, 0.5);
+  /* Semi-transparent surface */
+  backdrop-filter: blur(10px);
+  /* Optional glass effect */
 }
 
 .dark-background {
-  background-color: var(--background-color);
+  /* background-color: var(--background-color); */
+  background-color: transparent;
+  /* Let Vanta show through */
 }
 
 .section {
   padding: 60px 0;
+  background: transparent;
+  /* Ensure sections don't hide Vanta */
 }
 
 /* Header */
@@ -680,43 +688,66 @@ img {
   border-color: rgba(59, 130, 246, 0.2);
 }
 
-/* Vanta Background Integration */
+/* =========================================
+   GLOBAL BACKGROUND & LAYERING
+   ========================================= */
+
+/* 1. Vanta Background Container */
 #vanta-bg {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
-  z-index: -1;
-  /* Ensure it stays behind everything */
+  z-index: 0;
+  pointer-events: none;
   overflow: hidden;
+  inset: 0;
 }
 
-/* Dark Overlay for Readability */
-#vanta-bg::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
+/* Fix for Vanta Canvas Sizing */
+#vanta-bg canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* 2. Global Dark Overlay */
+#vanta-overlay {
+  position: fixed;
+  inset: 0;
   width: 100%;
   height: 100%;
-  background: rgba(15, 23, 42, 0.7);
-  /* Dark overlay to match theme */
+  background: rgba(0, 0, 0, 0.45);
   z-index: 1;
   pointer-events: none;
-  /* Allow mouse interaction with 3D effect if Vanta supports it, but overlay shouldn't block */
+  transition: background-color 0.3s ease;
 }
 
-/* Ensure Main Content sits above background */
+/* Light Mode Overlay Adjustment - User requested 0.15-0.25 */
+body.theme-light #vanta-overlay {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+
+/* 3. Content Layering */
+/* All main content wrappers must be above the overlay */
 .main,
 .header,
 .footer,
-.glass-navbar-container {
+.glass-navbar-container,
+#hero,
+#skills,
+#projects,
+#contact,
+.section,
+.container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
-/* Fallback for cleaner look if JS fails or loading */
-#vanta-bg {
-  background: var(--background-color);
+/* Fallback background color if Vanta fails */
+body {
+  background-color: var(--background-color);
+  /* Ensure body has color behind Vanta if needed, or let Vanta handle it */
 }
