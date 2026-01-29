@@ -11,11 +11,24 @@ const Components = {
             Abnosh Shahid
         </a>
 
-        <!-- Center Links -->
-            <a href="index.html" class="custom-nav-link" data-page="home">Home</a>
-            <a href="skills.html" class="custom-nav-link" data-page="skills">Skills</a>
-            <a href="index.html#education" class="custom-nav-link">Education</a>
-            <a href="index.html#projects" class="custom-nav-link">Projects</a>
+        <!-- Hamburger (Mobile Only) -->
+        <button class="mobile-menu-btn" aria-label="Toggle Menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+
+        <!-- Center Links (Desktop: Horizontal, Mobile: Dropdown) -->
+        <div class="nav-links-wrapper">
+             <div class="nav-links" id="navLinks">
+                <a href="index.html" class="custom-nav-link" data-page="home">Home</a>
+                <a href="skills.html" class="custom-nav-link" data-page="skills">Skills</a>
+                <a href="index.html#education" class="custom-nav-link">Education</a>
+                <a href="index.html#projects" class="custom-nav-link">Projects</a>
+            </div>
         </div>
 
         <!-- Theme Toggle -->
@@ -51,6 +64,7 @@ function renderComponents() {
     if (navbarContainer) {
         navbarContainer.innerHTML = Components.navbar;
         setActiveLink();
+        initMobileMenu();
     }
 
     // Render Footer
@@ -58,6 +72,37 @@ function renderComponents() {
     if (footerContainer) {
         footerContainer.innerHTML = Components.footer;
     }
+}
+
+function initMobileMenu() {
+    const mobileBtn = document.querySelector('.mobile-menu-btn');
+    const navLinksWrapper = document.querySelector('.nav-links-wrapper');
+    const links = document.querySelectorAll('.custom-nav-link');
+
+    if (!mobileBtn || !navLinksWrapper) return;
+
+    // Toggle Menu
+    mobileBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navLinksWrapper.classList.toggle('active');
+        mobileBtn.classList.toggle('active');
+    });
+
+    // Close when clicking a link
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinksWrapper.classList.remove('active');
+            mobileBtn.classList.remove('active');
+        });
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navLinksWrapper.contains(e.target) && !mobileBtn.contains(e.target)) {
+            navLinksWrapper.classList.remove('active');
+            mobileBtn.classList.remove('active');
+        }
+    });
 }
 
 function setActiveLink() {

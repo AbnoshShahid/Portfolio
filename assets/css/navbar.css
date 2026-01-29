@@ -121,8 +121,28 @@ body.theme-light .custom-nav-link.active {
     text-decoration: none;
 }
 
-/* Middle Nav Pill Group */
-.nav-pill-group {
+/* Mobile Menu Button - Hidden on Desktop */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    color: var(--nav-text-color);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.mobile-menu-btn:hover {
+    color: var(--primary-color);
+}
+
+/* Middle Nav Pill Group - Desktop */
+.nav-links-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
     display: flex;
     align-items: center;
     gap: 0.25rem;
@@ -130,20 +150,8 @@ body.theme-light .custom-nav-link.active {
     background: var(--nav-pill-bg);
     border-radius: 9999px;
     border: 1px solid var(--nav-border-color);
-
-    /* Responsive Scroll */
-    max-width: 100%;
-    overflow-x: auto;
-    scrollbar-width: none;
-    /* Firefox */
-    -ms-overflow-style: none;
-    /* IE/Edge */
 }
 
-.nav-pill-group::-webkit-scrollbar {
-    display: none;
-    /* Chrome/Safari */
-}
 
 .custom-nav-link {
     position: relative;
@@ -194,7 +202,10 @@ body.theme-light .custom-nav-link.active {
     transform: rotate(15deg);
 }
 
-/* Responsive Handling */
+/* =========================================
+   RESPONSIVE DESIGN (<= 768px)
+   ========================================= */
+
 @media (max-width: 992px) {
     .glass-navbar {
         padding: 0 1rem;
@@ -204,33 +215,109 @@ body.theme-light .custom-nav-link.active {
 
 @media (max-width: 768px) {
 
-    /* Mobile Horizontal Scroll Layout */
+    /* 1. Navbar Container Size */
     .glass-navbar-container {
         top: 10px;
-        padding: 0 0.5rem;
+        padding: 0 0.75rem;
     }
 
     .glass-navbar {
         height: 60px;
-        padding: 0 0.75rem;
-        gap: 0.5rem;
+        padding: 0 1rem;
+        display: flex;
         justify-content: space-between;
+        align-items: center;
+        /* Ensure z-index is high */
+        position: relative;
+        z-index: 1000;
     }
 
+    /* 2. Brand & Toggle */
     .nav-brand {
         font-size: 1.1rem;
-        /* Hide Brand Text on very small screens if needed, but keeping generally visible */
+        /* Prevent wrapping */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 50%;
     }
 
-    .nav-pill-group {
-        /* Allow it to take available space but respect brand/toggle */
-        flex: 1;
-        margin: 0 0.5rem;
-        /* justify-content: flex-start;  <-- Optional if you want left alignment */
+    /* 3. Show Hamburger */
+    .mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
+    /* 4. Hide Default Nav Links Wrapper */
+    .nav-links-wrapper {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding-top: 10px;
+        /* Space between navbar and dropdown */
+
+        display: none;
+        /* Hidden by default */
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        z-index: 1100;
+    }
+
+    /* Open State */
+    .nav-links-wrapper.active {
+        display: flex;
+        animation: slideDown 0.3s ease forwards;
+    }
+
+    /* 5. Mobile Dropdown Style */
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        max-width: 95vw;
+        /* Almost full width */
+        margin: 0 auto;
+
+        background: var(--nav-bg-glass);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--nav-border-color);
+        border-radius: 1.5rem;
+        padding: 1rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+
+        gap: 0.5rem;
+    }
+
+    /* 6. Link Styling for Mobile */
     .custom-nav-link {
-        padding: 0.5rem 0.8rem;
-        font-size: 0.85rem;
+        width: 100%;
+        text-align: center;
+        padding: 0.85rem;
+        border-radius: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+    }
+
+    .custom-nav-link:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .theme-toggle-btn {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
