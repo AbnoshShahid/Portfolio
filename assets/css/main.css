@@ -749,5 +749,7 @@ body.theme-light #vanta-overlay {
 /* Fallback background color if Vanta fails */
 body {
   background-color: var(--background-color);
-  /* Ensure body has color behind Vanta if needed, or let Vanta handle it */
+  min-height: 100vh;
+  overflow-x: hidden;
+  /* Prevent horizontal scroll */
 }

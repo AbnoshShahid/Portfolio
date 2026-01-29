@@ -321,3 +321,91 @@ body.theme-light .custom-nav-link.active {
         transform: translateY(0);
     }
 }
+
+font-size: 1.1rem;
+/* Prevent wrapping */
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+max-width: 50%;
+}
+
+/* 3. Show Hamburger */
+.mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 4. Hide Default Nav Links Wrapper */
+.nav-links-wrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding-top: 10px;
+    /* Space between navbar and dropdown */
+
+    display: none;
+    /* Hidden by default */
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    z-index: 1100;
+}
+
+/* Open State */
+.nav-links-wrapper.active {
+    display: flex;
+    animation: slideDown 0.3s ease forwards;
+}
+
+/* 5. Mobile Dropdown Style */
+.nav-links {
+    flex-direction: column;
+    width: 100%;
+    max-width: 95vw;
+    /* Almost full width */
+    margin: 0 auto;
+
+    background: var(--nav-bg-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--nav-border-color);
+    border-radius: 1.5rem;
+    padding: 1rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+
+    gap: 0.5rem;
+}
+
+/* 6. Link Styling for Mobile */
+.custom-nav-link {
+    width: 100%;
+    text-align: center;
+    padding: 0.85rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.custom-nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.theme-toggle-btn {
+    width: 36px;
+    height: 36px;
+}
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
