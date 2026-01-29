@@ -679,3 +679,44 @@ img {
   background: rgba(59, 130, 246, 0.1);
   border-color: rgba(59, 130, 246, 0.2);
 }
+
+/* Vanta Background Integration */
+#vanta-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  /* Ensure it stays behind everything */
+  overflow: hidden;
+}
+
+/* Dark Overlay for Readability */
+#vanta-bg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.7);
+  /* Dark overlay to match theme */
+  z-index: 1;
+  pointer-events: none;
+  /* Allow mouse interaction with 3D effect if Vanta supports it, but overlay shouldn't block */
+}
+
+/* Ensure Main Content sits above background */
+.main,
+.header,
+.footer,
+.glass-navbar-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Fallback for cleaner look if JS fails or loading */
+#vanta-bg {
+  background: var(--background-color);
+}
