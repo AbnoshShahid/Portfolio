@@ -102,6 +102,16 @@
    */
   const projectsData = [
     {
+      title: "InvestorLens AI",
+      description: "AI-powered startup investment analysis platform with multi-agent analysis, real-time validation, risk breakdown, confidence scoring, and an interactive dashboard.",
+      image: "assets/img/projects/investorlens-preview.png",
+      tags: ["Next.js", "React", "Tailwind CSS", "Zod", "React Hook Form", "Recharts"],
+      highlights: [],
+      githubUrl: "https://github.com/AbnoshShahid/Investorlens-ai.git",
+      liveUrl: "https://hac-investorlens-ai.vercel.app/",
+      detailsUrl: "#"
+    },
+    {
       title: "AI Roadmap Navigator",
       description: "A comprehensive MERN stack platform for generating and tracking personalized career learning paths.",
       image: "assets/img/projects/ai-roadmap.png",
