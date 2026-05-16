@@ -112,6 +112,16 @@
       detailsUrl: "#"
     },
     {
+      title: "Web Security Capstone Project",
+      description: "Completed 32 hands-on web security labs using PortSwigger Web Security Academy and Burp Suite. Documented vulnerability types, attack vectors, root causes, and developer-side fixes across topics like JWT, OAuth, SSTI, GraphQL, HTTP request smuggling, and web cache poisoning.",
+      image: "assets/img/projects/cyber-security.png",
+      tags: ["Cybersecurity", "Web Security", "Burp Suite", "PortSwigger", "OWASP", "JWT", "OAuth"],
+      highlights: [],
+      githubUrl: "",
+      liveUrl: "",
+      detailsUrl: "#"
+    },
+    {
       title: "AI Roadmap Navigator",
       description: "A comprehensive MERN stack platform for generating and tracking personalized career learning paths.",
       image: "assets/img/projects/ai-roadmap.png",

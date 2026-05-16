@@ -658,7 +658,12 @@ img {
   margin-bottom: 1.25rem;
   line-height: 1.5;
   flex-grow: 1;
-  /* Pushes tags to bottom */
+  /* Line clamp to keep heights consistent */
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .project-tags {

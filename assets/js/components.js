@@ -28,6 +28,7 @@ const Components = {
                 <a href="skills.html" class="custom-nav-link" data-page="skills">Skills</a>
                 <a href="index.html#education" class="custom-nav-link">Education</a>
                 <a href="index.html#projects" class="custom-nav-link">Projects</a>
+                <a href="index.html#certifications" class="custom-nav-link">Certifications</a>
             </div>
         </div>
 
