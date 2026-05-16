@@ -462,6 +462,34 @@ img {
   border-color: rgba(59, 130, 246, 0.2);
 }
 
+/* Education Section Responsive Layout */
+.education-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.education-badge {
+  position: static;
+  margin-bottom: 0.5rem;
+  order: -1; /* Puts badge above the text on mobile */
+}
+
+@media (min-width: 768px) {
+  .education-content {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+  }
+  .education-badge {
+    margin-bottom: 0;
+    margin-top: 0;
+    order: 0;
+  }
+}
+
 /* Skills Section */
 .section-title {
   text-align: center;
