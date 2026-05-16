@@ -244,37 +244,50 @@
    * Skills Data & Rendering
    */
   const skillsData = [
-    // Row 1
+    // Core Web & JavaScript
     { name: "HTML5", icon: "assets/img/tech/html5.svg" },
     { name: "CSS3", icon: "assets/img/tech/css3.svg" },
     { name: "JavaScript", icon: "assets/img/tech/javascript.svg" },
+    { name: "TypeScript", icon: "assets/img/tech/typescript.svg" },
     { name: "React", icon: "assets/img/tech/react.svg" },
+    { name: "Next.js", icon: "assets/img/tech/nextjs.svg" },
+    
+    // Backend & Databases
     { name: "Node.js", icon: "assets/img/tech/nodejs.svg" },
-    { name: "Express", icon: "assets/img/tech/express.svg" },
-
-    // Row 2
+    { name: "Express.js", icon: "assets/img/tech/express.svg" },
     { name: "MongoDB", icon: "assets/img/tech/mongodb.svg" },
     { name: "MySQL", icon: "assets/img/tech/mysql.svg" },
+    { name: "SQL", icon: "assets/img/tech/sql.svg" },
+    { name: "Python", icon: "assets/img/tech/python.svg" },
+
+    // CSS Frameworks & Tools
+    { name: "Tailwind CSS", icon: "assets/img/images.jpeg" },
+    { name: "Bootstrap", icon: "assets/img/tech/bootstrap.svg" },
+    { name: "Redux", icon: "assets/img/tech/redux.svg" },
     { name: "Git", icon: "assets/img/tech/git.svg" },
     { name: "GitHub", icon: "assets/img/tech/github.svg" },
-    { name: "Bootstrap", icon: "assets/img/tech/bootstrap.svg" },
-    { name: "Tailwind", icon: "assets/img/images.jpeg" },
+    { name: "VS Code", icon: "assets/img/tech/vscode.svg" },
 
-    // Row 3
-    { name: "Python", icon: "assets/img/tech/python.svg" },
-    { name: "C++", icon: "assets/img/tech/cplusplus.svg" },
-    { name: "Figma", icon: "assets/img/tech/figma.svg" },
-    { name: "Next.js", icon: "assets/img/tech/nextjs.svg" },
-    { name: "TypeScript", icon: "assets/img/tech/typescript.svg" },
-    { name: "Redux", icon: "assets/img/tech/redux.svg" },
-
-    // Row 4
-    { name: "Canva", icon: "assets/img/tech/canva.svg" },
-    { name: "SQL", icon: "assets/img/tech/sql.svg" },
+    // Operating Systems & Environments
     { name: "Linux", icon: "assets/img/tech/linux.svg" },
     { name: "Ubuntu", icon: "assets/img/tech/ubuntu.svg" },
-    { name: "VS Code", icon: "assets/img/tech/vscode.svg" },
-    { name: "Filmora", icon: "assets/img/logo-filmora.png", customStyle: "background: white; padding: 5px; border-radius: 5px; width: 100%; height: auto; max-width: 40px; max-height: 40px;" }
+
+    // Generative AI Skills
+    { name: "Groq", icon: "https://unpkg.com/lucide-static@0.321.0/icons/cpu.svg", customStyle: "filter: invert(1) drop-shadow(0 0 5px rgba(59,130,246,0.5));" },
+    { name: "Generative AI", icon: "https://unpkg.com/lucide-static@0.321.0/icons/sparkles.svg", customStyle: "filter: invert(1) drop-shadow(0 0 5px rgba(168,85,247,0.5));" },
+    { name: "LLMs", icon: "https://unpkg.com/lucide-static@0.321.0/icons/bot.svg", customStyle: "filter: invert(1) drop-shadow(0 0 5px rgba(236,72,153,0.5));" },
+    { name: "Prompt Engineering", icon: "https://unpkg.com/lucide-static@0.321.0/icons/terminal-square.svg", customStyle: "filter: invert(1);" },
+    { name: "AI API Integration", icon: "https://unpkg.com/lucide-static@0.321.0/icons/network.svg", customStyle: "filter: invert(1);" },
+
+    // Cybersecurity Skills
+    { name: "Burp Suite", icon: "https://unpkg.com/lucide-static@0.321.0/icons/bug.svg", customStyle: "filter: invert(0.6) sepia(1) saturate(10) hue-rotate(-30deg);" },
+    { name: "PortSwigger", icon: "https://unpkg.com/lucide-static@0.321.0/icons/shield-check.svg", customStyle: "filter: invert(1);" },
+    { name: "Web Security", icon: "https://unpkg.com/lucide-static@0.321.0/icons/lock.svg", customStyle: "filter: invert(1);" },
+    { name: "OWASP Top 10", icon: "https://unpkg.com/lucide-static@0.321.0/icons/list-checks.svg", customStyle: "filter: invert(1);" },
+    { name: "Vulnerability Analysis", icon: "https://unpkg.com/lucide-static@0.321.0/icons/scan-search.svg", customStyle: "filter: invert(1);" },
+    { name: "JWT Security", icon: "https://unpkg.com/lucide-static@0.321.0/icons/key-round.svg", customStyle: "filter: invert(1);" },
+    { name: "OAuth Security", icon: "https://unpkg.com/lucide-static@0.321.0/icons/shield.svg", customStyle: "filter: invert(1);" },
+    { name: "Kali Linux", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kalilinux/kalilinux-original.svg" }
   ];
 
   function renderSkills() {
